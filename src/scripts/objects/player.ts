@@ -5,6 +5,7 @@ export interface Player extends Phaser.Physics.Arcade.Sprite {
 
 export const createPlayer = (scene: Phaser.Scene) => {
     const player = scene.physics.add.sprite(200, 200, "player_idle");
+    player.on("collide", onCollide);
     createAnimations(scene, player);
     return player;
 }
@@ -68,4 +69,8 @@ export const createAnimations = (scene: Phaser.Scene, player: Player) : void => 
             player.anims.play("player_idle", true);
         }
     }, scene);
+}
+
+export const onCollide = () => {
+    console.log("collide");
 }

@@ -1,6 +1,6 @@
 import PhaserLogo from "../objects/phaserLogo";
 import FpsText from "../objects/fpsText";
-import { createPlayer, loadPlayerSprites, Player } from "../objects/player";
+import { createPlayer, loadPlayerSprites, Player, onCollide } from "../objects/player";
 import { createControls, configControls } from "../objects/controls";
 import { loadBulletSprite } from "../objects/bullet";
 import { createSlimeAnimations, loadSlimeSprites, createSlime } from "../objects/slime";
@@ -40,16 +40,11 @@ export default class MainScene extends Phaser.Scene
 
         this.water.setCollisionByProperty({ collider: true });
 
-        this.player = createPlayer(this);
-        this.player.anims.play("player_idle", true);
+        this.createNewPlayer();
+        this.createNewSlime();
 
         this.controls = createControls(this);
         createSlimeAnimations(this);
-        this.slime = createSlime(this);
-
-        this.physics.add.collider(this.player, this.water);
-        this.physics.add.collider(this.slime, this.water);
-        this.physics.add.collider(this.slime, this.player);
     }
 
     update(time, delta)
@@ -63,12 +58,42 @@ export default class MainScene extends Phaser.Scene
         this.slime.body.velocity.x = playerX - this.slime.x;
         this.slime.body.velocity.y = playerY - this.slime.y;
 
+        const colliding = this.checkCollide(this.player, this.slime);
 
-        if (this.slime.y == this.player.body.y && this.slime.x == this.player.body.x)
+        if (colliding)
         {
+            this.player.destroy();
+            this.slime.destroy();
+
+            console.log("You lose!");
             alert("You lose!")
+
+            this.createNewPlayer();
+            this.createNewSlime();
         }
 
         //this.player.body.setSize(this.player.width, this.player.height, true);
+    }
+
+    checkCollide(obj1, obj2) {
+        var distX = Math.abs(obj1.x - obj2.x) - 18;
+        var distY = Math.abs(obj1.y - obj2.y) - 18;
+        if (distX < obj1.width / 2) {
+            if (distY < obj1.height / 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    createNewPlayer() {
+        this.player = createPlayer(this);
+        this.player.anims.play("player_idle", true);
+        this.physics.add.collider(this.player, this.water);
+    }
+
+    createNewSlime() {
+        this.slime = createSlime(this);
+        this.physics.add.collider(this.slime, this.water);
     }
 }
