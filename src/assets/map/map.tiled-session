@@ -3,22 +3,43 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "map.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "map.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 277,
+                "y": 284.5
+            }
+        },
+        "map.tmx#grass": {
+            "scaleInDock": 1
+        },
+        "map.tmx#water": {
+            "scaleInDock": 1
+        }
     },
-    "last.exportedFilePath": "C:/Users/Joao/Documents/Projects/JF91/JF91 Phaser Projects/JF91.Examples.RpgBasic/src/assets/map",
-    "last.imagePath": "C:/Users/Joao/Documents/Projects/JF91/JF91 Phaser Projects/JF91.Examples.RpgBasic/src/assets/map",
-    "lastUsedTilesetExportFilter": "JSON tileset files (*.tsj *.json)",
-    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "last.exportedFilePath": "C:/Users/Joao Franco/Documents/Projects/JF91/Phaser Map/src/src/assets/map",
+    "last.imagePath": "C:/Users/Joao Franco/Documents/Projects/JF91/Phaser Map/src/src/assets/map",
+    "map.height": 50,
+    "map.lastUsedExportFilter": "Arquivos de mapa JSON (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
-    "map.width": 25,
+    "map.tileHeight": 1,
+    "map.tileWidth": 1,
+    "map.width": 50,
     "openFiles": [
+        "map.tmx"
     ],
     "project": "map.tiled-project",
-    "property.type": "bool",
     "recentFiles": [
+        "map.tmx"
     ],
-    "tileset.embedInMap": true
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 1,
+        "width": 1
+    }
 }
